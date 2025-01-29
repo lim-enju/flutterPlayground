@@ -1,18 +1,30 @@
+import 'package:basic_01_asynchronous/data/Product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ProductImage extends StatelessWidget {
-  const ProductImage({super.key});
+class ProductImageWidget extends StatelessWidget {
+  const ProductImageWidget(
+      {super.key, required this.product, required this.rank});
+
+  final ProductItem product;
+  final int rank;
 
   @override
   Widget build(BuildContext context) {
+    // only 상품 여부
+    var onlyImageUrl = product.badges
+        ?.firstWhere((item) => item?.position == 3, orElse: () => null)
+        ?.image
+        ?.url;
+    var isOnly = onlyImageUrl != null;
+
     return SizedBox(
       width: 150,
       height: 150,
       child: Stack(
         children: [
-          Image.asset(
-            'assets/sample.avif',
+          Image.network(
+            product.imageUrl ?? '',
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -28,7 +40,7 @@ class ProductImage extends StatelessWidget {
                   ),
                   Positioned(
                     child: Text(
-                      '1',
+                      rank.toString(),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 10,
@@ -38,24 +50,14 @@ class ProductImage extends StatelessWidget {
                   ),
                 ],
               ),
-              Container(
-                width: 40,
-                height: 30,
-                alignment: Alignment.bottomCenter,
-                margin: EdgeInsets.only(right: 5),
-                padding: EdgeInsets.only(bottom: 2),
-                decoration: BoxDecoration(
-                  color: Colors.black87,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10),
-                  ),
-                ),
-                child: Text(
-                  'Only',
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: Colors.white,
+              Visibility(
+                visible: isOnly,
+                child: Container(
+                  margin: EdgeInsets.only(right: 8),
+                  child: Image.network(
+                    onlyImageUrl ?? '',
+                    fit: BoxFit.contain,
+                    width: 40,
                   ),
                 ),
               ),

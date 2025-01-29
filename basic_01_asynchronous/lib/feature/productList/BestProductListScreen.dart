@@ -1,4 +1,5 @@
-import 'package:basic_01_asynchronous/feature/productList/widget/Product.dart';
+import 'package:basic_01_asynchronous/data/ApiService.dart';
+import 'package:basic_01_asynchronous/feature/productList/widget/ProductWidget.dart';
 import 'package:flutter/material.dart';
 
 class BestproductListScreen extends StatelessWidget {
@@ -40,14 +41,25 @@ class BestProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return Product();
+    return FutureBuilder(
+      future: ApiService().fetchBestProduction(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          var data = snapshot.data ?? [];
+          return ListView.separated(
+            itemCount: data.length,
+            itemBuilder: (context, index) => ProductWidget(
+              product: data[index],
+              rank: index + 1,
+            ),
+            separatorBuilder: (context, index) => Divider(
+              thickness: 1,
+            ),
+          );
+        }
+
+        return Text('로딩중');
       },
-      separatorBuilder: (context, index) => Divider(
-        thickness: 1,
-      ),
     );
   }
 }
