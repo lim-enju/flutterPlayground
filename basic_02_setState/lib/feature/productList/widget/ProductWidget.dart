@@ -1,6 +1,6 @@
-import 'package:basic_01_asynchronous/data/Product.dart';
-import 'package:basic_01_asynchronous/feature/productList/widget/ProductImageWidget.dart';
-import 'package:basic_01_asynchronous/feature/productList/widget/ProductInfoWidget.dart';
+import 'package:basic_02_setState/data/Product.dart';
+import 'package:basic_02_setState/feature/productList/widget/ProductImageWidget.dart';
+import 'package:basic_02_setState/feature/productList/widget/ProductInfoWidget.dart';
 import 'package:flutter/material.dart';
 
 class ProductWidget extends StatelessWidget {
