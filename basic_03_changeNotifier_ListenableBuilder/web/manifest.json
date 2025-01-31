@@ -1,6 +1,6 @@
 {
-    "name": "basic_01_asynchronous",
-    "short_name": "basic_01_asynchronous",
+    "name": "basic_03_changeNotifier_ListenableBuilder",
+    "short_name": "basic_03_changeNotifier_ListenableBuilder",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
@@ -13,7 +13,6 @@
             "src": "icons/Icon-192.png",
             "sizes": "192x192",
             "type": "image/png"
-        },
         {
             "src": "icons/Icon-512.png",
             "sizes": "512x512",
