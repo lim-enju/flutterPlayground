@@ -49,17 +49,19 @@ class BestProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BestProdutListModel model = context.watch<BestProdutListModel>();
-
-      return ListView.separated(
-        itemCount: model.value.productItems.length,
-        itemBuilder: (context, index) => ProductWidget(
-          product: model.value.productItems[index],
-          rank: index + 1,
-        ),
-        separatorBuilder: (context, index) => Divider(
-          thickness: 1,
-        ),
-      );
+    return Consumer<BestProdutListModel>(
+      builder: (context, model, child) {
+        return ListView.separated(
+          itemCount: model.value.productItems.length,
+          itemBuilder: (context, index) => ProductWidget(
+            product: model.value.productItems[index],
+            rank: index + 1,
+          ),
+          separatorBuilder: (context, index) => Divider(
+            thickness: 1,
+          ),
+        );
+      },
+    );
   }
 }
