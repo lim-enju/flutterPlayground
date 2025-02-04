@@ -1,4 +1,4 @@
-import 'package:basic_06_crypto_track/presentation/main_state.dart';
+import 'package:basic_06_crypto_track/presentation/main/main_state.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 

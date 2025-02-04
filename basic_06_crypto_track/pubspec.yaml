@@ -38,7 +38,7 @@ dependencies:
   go_router: ^9.0.0
   injectable: ^2.1.2
   get_it: ^8.0.3
-
+  flutter_svg: ^2.0.9
 
 dev_dependencies:
   flutter_test:
@@ -93,3 +93,6 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+  assets:
+    - assets/
