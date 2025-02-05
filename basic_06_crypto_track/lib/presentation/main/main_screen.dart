@@ -1,6 +1,7 @@
 import 'package:basic_06_crypto_track/presentation/main/main_viewmodel.dart';
 import 'package:basic_06_crypto_track/presentation/main/widget/transaction_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
@@ -57,6 +58,18 @@ class MainScreen extends StatelessWidget {
               ),
             ),
           ),
+          SliverPadding(
+            padding: EdgeInsets.only(
+              left: 10,
+              bottom: 10,
+            ),
+            sliver: SliverToBoxAdapter(
+              child: Text(
+                'Transactions\nHistory',
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
+            ),
+          ),
           MainScreenContent()
         ],
       ),
@@ -69,15 +82,18 @@ class MainScreenContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverGrid(
-      gridDelegate:
-          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-      delegate: SliverChildListDelegate(
-        [
-          TransactionWidget(),
-          TransactionWidget(),
-          TransactionWidget(),
-        ],
+    return SliverPadding(
+      padding: EdgeInsets.all(10),
+      sliver: SliverMasonryGrid.count(
+        crossAxisCount: 2,
+        mainAxisSpacing: 8,
+        crossAxisSpacing: 8,
+        itemBuilder: (context, index) {
+          return TransactionWidget(
+            height: (index * 150),
+          );
+        },
+        childCount: 10,
       ),
     );
   }

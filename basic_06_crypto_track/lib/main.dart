@@ -20,6 +20,20 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.black87,
+        textTheme: const TextTheme(
+          displayMedium: TextStyle(
+            color: Colors.white,
+          ),
+          bodyLarge: TextStyle(
+            color: Colors.white,
+          ),
+          bodyMedium: TextStyle(
+            color: Colors.white,
+          ),
+          bodySmall: TextStyle(
+            color: Colors.grey,
+          ),
+        ),
       ),
     );
   }
