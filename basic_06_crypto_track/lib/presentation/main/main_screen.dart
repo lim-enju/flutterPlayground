@@ -1,3 +1,4 @@
+import 'package:basic_06_crypto_track/domain/test/test.dart';
 import 'package:basic_06_crypto_track/presentation/main/main_viewmodel.dart';
 import 'package:basic_06_crypto_track/presentation/main/widget/transaction_widget.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +90,9 @@ class MainScreenContent extends StatelessWidget {
         mainAxisSpacing: 8,
         crossAxisSpacing: 8,
         itemBuilder: (context, index) {
-          return TransactionWidget();
+          return TransactionWidget(
+            transactionChartData: data,
+            );
         },
         childCount: 10,
       ),

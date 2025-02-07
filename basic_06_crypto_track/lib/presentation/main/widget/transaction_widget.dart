@@ -1,10 +1,15 @@
+import 'package:basic_06_crypto_track/domain/model/transaction_chart_data.dart';
+import 'package:basic_06_crypto_track/domain/model/transaction_price_data.dart';
+import 'package:basic_06_crypto_track/domain/model/transaction_volumn_data.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class TransactionWidget extends StatelessWidget {
+  final TransactionChartData transactionChartData;
 
   const TransactionWidget({
     super.key,
+    required this.transactionChartData,
   });
 
   @override
@@ -25,7 +30,9 @@ class TransactionWidget extends StatelessWidget {
               ),
               SizedBox(
                 height: 100,
-                child:  TransactionChart(),
+                child: TransactionChart(
+                  transactionChartData: transactionChartData,
+                ),
               ),
               SizedBox(
                 height: 10,
@@ -78,84 +85,85 @@ class TransactionHeaderWidget extends StatelessWidget {
 }
 
 class TransactionChart extends StatelessWidget {
-  const TransactionChart({super.key});
+  final TransactionChartData transactionChartData;
+
+  const TransactionChart({super.key, required this.transactionChartData});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        TransactionBarChart(),
-        TransactionLineChart(),
+        Positioned(
+          child: TransactionBarChart(
+            volumns: transactionChartData.currentTradeVolumn,
+          ),
+        ),
+        Positioned(
+          child: TransactionLineChart(
+            prices: transactionChartData.currentTradePrice,
+          ),
+        ),
       ],
     );
   }
 }
 
 class TransactionBarChart extends StatelessWidget {
-  const TransactionBarChart({super.key});
+  final List<TransactionVolumnData> volumns;
 
-    @override
-    Widget build(BuildContext context) {
-      return BarChart(
-          BarChartData(
-            alignment: BarChartAlignment.spaceBetween,
-            barGroups: barGroups,
-            borderData: FlBorderData(show: false),
-            gridData: FlGridData(show: false),
-            titlesData: FlTitlesData(
-              topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false) ),
-              rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false) ),
-              leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false) ),
-              bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: false) ),
-            ),
-            maxY: 4,
-            minY: 1,
-          ),
-      );
-    }
+  const TransactionBarChart({
+    super.key,
+    required this.volumns,
+  });
 
-    List<BarChartGroupData> get barGroups => [
-      BarChartGroupData(
-        x: 1,
-        barRods: [
-          BarChartRodData(
-            toY: 1.1,
-            color: Colors.blue,
-          ),
-        ],
+  @override
+  Widget build(BuildContext context) {
+    return BarChart(
+      BarChartData(
+        alignment: BarChartAlignment.spaceBetween,
+        barGroups: barGroups,
+        borderData: FlBorderData(show: false),
+        gridData: FlGridData(
+          show: false,
+          drawHorizontalLine: false,
+          drawVerticalLine: false,
+        ),
+        titlesData: FlTitlesData(
+          topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+        ),
+        maxY: 10,
+        minY: 0,
       ),
-      BarChartGroupData(
-        x: 3,
-        barRods: [
-          BarChartRodData(
-            toY: 1.5,
-            color: Colors.blue,
-          ),
-        ],
-      ),
-        BarChartGroupData(
-        x: 5,
-        barRods: [
-          BarChartRodData(
-            toY: 1.4,
-            color: Colors.blue,
-          ),
-        ],
-      ),
-        BarChartGroupData(
-        x: 7,
-        barRods: [
-          BarChartRodData(
-            toY: 3.4,
-            color: Colors.blue,
-          ),
-        ],
-      ),
-    ];
+    );
+  }
+
+  List<BarChartGroupData> get barGroups => volumns
+      .asMap()
+      .map((index, data) => MapEntry(
+          index,
+          BarChartGroupData(
+            x: index,
+            barRods: [
+              BarChartRodData(
+                toY: data.volumn,
+                color: Colors.blue,
+              ),
+            ],
+          )))
+      .values
+      .toList();
 }
 
 class TransactionLineChart extends StatelessWidget {
-  const TransactionLineChart({super.key});
+  final List<TransactionPriceData> prices;
+
+  const TransactionLineChart({
+    super.key,
+    required this.prices,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -165,33 +173,30 @@ class TransactionLineChart extends StatelessWidget {
     );
   }
 
-    LineChartData get sampleData1 => LineChartData(
+  LineChartData get sampleData1 => LineChartData(
         lineTouchData: lineTouchData1,
         gridData: FlGridData(show: false),
         titlesData: titlesData1,
         borderData: borderData,
         lineBarsData: lineBarsData1,
-        minX: 1,
-        maxX: 4,
-        maxY: 4,
-        minY: 1,
+        minX: 0,
+        maxX: prices.length.toDouble(),
+        maxY: 10,
+        minY: 0,
       );
 
   LineTouchData get lineTouchData1 => LineTouchData(
-    handleBuiltInTouches: true,
-    touchTooltipData: LineTouchTooltipData(
-      getTooltipColor: (touchedSpot) =>
-          Colors.blueGrey.withValues(alpha: 0.8),
-    ),
-  );
+        handleBuiltInTouches: true,
+        touchTooltipData: LineTouchTooltipData(
+          getTooltipColor: (touchedSpot) =>
+              Colors.blueGrey.withValues(alpha: 0.8),
+        ),
+      );
 
   FlTitlesData get titlesData1 => FlTitlesData(
-        bottomTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false)
-        ),
-        leftTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false)
-        ),
+        bottomTitles:
+            const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+        leftTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
         rightTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
@@ -202,8 +207,8 @@ class TransactionLineChart extends StatelessWidget {
 
   List<LineChartBarData> get lineBarsData1 => [lineChartBarData1_1];
 
-    FlBorderData get borderData => FlBorderData(
-        show: true,
+  FlBorderData get borderData => FlBorderData(
+        show: false,
         border: Border(
           bottom: BorderSide(color: Colors.black),
           left: const BorderSide(color: Colors.transparent),
@@ -219,12 +224,12 @@ class TransactionLineChart extends StatelessWidget {
         isStrokeCapRound: true,
         dotData: const FlDotData(show: false),
         belowBarData: BarAreaData(show: false),
-        spots: const [
-          FlSpot(1, 1),
-          FlSpot(2, 1.5),
-          FlSpot(3, 1.4),
-          FlSpot(4, 3.4),
-        ],
+        spots: prices
+            .asMap()
+            .map((index, data) =>
+                MapEntry(index, FlSpot(index.toDouble(), data.price)))
+            .values
+            .toList(),
       );
 }
 
