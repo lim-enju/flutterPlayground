@@ -89,9 +89,7 @@ class MainScreenContent extends StatelessWidget {
         mainAxisSpacing: 8,
         crossAxisSpacing: 8,
         itemBuilder: (context, index) {
-          return TransactionWidget(
-            height: (index * 150),
-          );
+          return TransactionWidget();
         },
         childCount: 10,
       ),
