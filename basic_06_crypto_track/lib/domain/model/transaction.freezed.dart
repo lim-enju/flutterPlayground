@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'transaction_chart_data.dart';
+part of 'transaction.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,50 +15,56 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$TransactionChartData {
+mixin _$Transaction {
+  bool get isPrimary => throw _privateConstructorUsedError;
   List<TransactionPriceData> get currentTradePrice =>
       throw _privateConstructorUsedError;
   List<TransactionVolumnData> get currentTradeVolumn =>
       throw _privateConstructorUsedError;
 
-  /// Create a copy of TransactionChartData
+  /// Create a copy of Transaction
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TransactionChartDataCopyWith<TransactionChartData> get copyWith =>
+  $TransactionCopyWith<Transaction> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TransactionChartDataCopyWith<$Res> {
-  factory $TransactionChartDataCopyWith(TransactionChartData value,
-          $Res Function(TransactionChartData) then) =
-      _$TransactionChartDataCopyWithImpl<$Res, TransactionChartData>;
+abstract class $TransactionCopyWith<$Res> {
+  factory $TransactionCopyWith(
+          Transaction value, $Res Function(Transaction) then) =
+      _$TransactionCopyWithImpl<$Res, Transaction>;
   @useResult
   $Res call(
-      {List<TransactionPriceData> currentTradePrice,
+      {bool isPrimary,
+      List<TransactionPriceData> currentTradePrice,
       List<TransactionVolumnData> currentTradeVolumn});
 }
 
 /// @nodoc
-class _$TransactionChartDataCopyWithImpl<$Res,
-        $Val extends TransactionChartData>
-    implements $TransactionChartDataCopyWith<$Res> {
-  _$TransactionChartDataCopyWithImpl(this._value, this._then);
+class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
+    implements $TransactionCopyWith<$Res> {
+  _$TransactionCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TransactionChartData
+  /// Create a copy of Transaction
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isPrimary = null,
     Object? currentTradePrice = null,
     Object? currentTradeVolumn = null,
   }) {
     return _then(_value.copyWith(
+      isPrimary: null == isPrimary
+          ? _value.isPrimary
+          : isPrimary // ignore: cast_nullable_to_non_nullable
+              as bool,
       currentTradePrice: null == currentTradePrice
           ? _value.currentTradePrice
           : currentTradePrice // ignore: cast_nullable_to_non_nullable
@@ -72,35 +78,41 @@ class _$TransactionChartDataCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$TransactionChartDataImplCopyWith<$Res>
-    implements $TransactionChartDataCopyWith<$Res> {
-  factory _$$TransactionChartDataImplCopyWith(_$TransactionChartDataImpl value,
-          $Res Function(_$TransactionChartDataImpl) then) =
-      __$$TransactionChartDataImplCopyWithImpl<$Res>;
+abstract class _$$TransactionImplCopyWith<$Res>
+    implements $TransactionCopyWith<$Res> {
+  factory _$$TransactionImplCopyWith(
+          _$TransactionImpl value, $Res Function(_$TransactionImpl) then) =
+      __$$TransactionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {List<TransactionPriceData> currentTradePrice,
+      {bool isPrimary,
+      List<TransactionPriceData> currentTradePrice,
       List<TransactionVolumnData> currentTradeVolumn});
 }
 
 /// @nodoc
-class __$$TransactionChartDataImplCopyWithImpl<$Res>
-    extends _$TransactionChartDataCopyWithImpl<$Res, _$TransactionChartDataImpl>
-    implements _$$TransactionChartDataImplCopyWith<$Res> {
-  __$$TransactionChartDataImplCopyWithImpl(_$TransactionChartDataImpl _value,
-      $Res Function(_$TransactionChartDataImpl) _then)
+class __$$TransactionImplCopyWithImpl<$Res>
+    extends _$TransactionCopyWithImpl<$Res, _$TransactionImpl>
+    implements _$$TransactionImplCopyWith<$Res> {
+  __$$TransactionImplCopyWithImpl(
+      _$TransactionImpl _value, $Res Function(_$TransactionImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TransactionChartData
+  /// Create a copy of Transaction
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isPrimary = null,
     Object? currentTradePrice = null,
     Object? currentTradeVolumn = null,
   }) {
-    return _then(_$TransactionChartDataImpl(
+    return _then(_$TransactionImpl(
+      isPrimary: null == isPrimary
+          ? _value.isPrimary
+          : isPrimary // ignore: cast_nullable_to_non_nullable
+              as bool,
       currentTradePrice: null == currentTradePrice
           ? _value._currentTradePrice
           : currentTradePrice // ignore: cast_nullable_to_non_nullable
@@ -115,13 +127,16 @@ class __$$TransactionChartDataImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TransactionChartDataImpl implements _TransactionChartData {
-  _$TransactionChartDataImpl(
-      {required final List<TransactionPriceData> currentTradePrice,
+class _$TransactionImpl implements _Transaction {
+  _$TransactionImpl(
+      {required this.isPrimary,
+      required final List<TransactionPriceData> currentTradePrice,
       required final List<TransactionVolumnData> currentTradeVolumn})
       : _currentTradePrice = currentTradePrice,
         _currentTradeVolumn = currentTradeVolumn;
 
+  @override
+  final bool isPrimary;
   final List<TransactionPriceData> _currentTradePrice;
   @override
   List<TransactionPriceData> get currentTradePrice {
@@ -142,14 +157,16 @@ class _$TransactionChartDataImpl implements _TransactionChartData {
 
   @override
   String toString() {
-    return 'TransactionChartData(currentTradePrice: $currentTradePrice, currentTradeVolumn: $currentTradeVolumn)';
+    return 'Transaction(isPrimary: $isPrimary, currentTradePrice: $currentTradePrice, currentTradeVolumn: $currentTradeVolumn)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TransactionChartDataImpl &&
+            other is _$TransactionImpl &&
+            (identical(other.isPrimary, isPrimary) ||
+                other.isPrimary == isPrimary) &&
             const DeepCollectionEquality()
                 .equals(other._currentTradePrice, _currentTradePrice) &&
             const DeepCollectionEquality()
@@ -159,35 +176,37 @@ class _$TransactionChartDataImpl implements _TransactionChartData {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      isPrimary,
       const DeepCollectionEquality().hash(_currentTradePrice),
       const DeepCollectionEquality().hash(_currentTradeVolumn));
 
-  /// Create a copy of TransactionChartData
+  /// Create a copy of Transaction
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TransactionChartDataImplCopyWith<_$TransactionChartDataImpl>
-      get copyWith =>
-          __$$TransactionChartDataImplCopyWithImpl<_$TransactionChartDataImpl>(
-              this, _$identity);
+  _$$TransactionImplCopyWith<_$TransactionImpl> get copyWith =>
+      __$$TransactionImplCopyWithImpl<_$TransactionImpl>(this, _$identity);
 }
 
-abstract class _TransactionChartData implements TransactionChartData {
-  factory _TransactionChartData(
-          {required final List<TransactionPriceData> currentTradePrice,
+abstract class _Transaction implements Transaction {
+  factory _Transaction(
+          {required final bool isPrimary,
+          required final List<TransactionPriceData> currentTradePrice,
           required final List<TransactionVolumnData> currentTradeVolumn}) =
-      _$TransactionChartDataImpl;
+      _$TransactionImpl;
 
+  @override
+  bool get isPrimary;
   @override
   List<TransactionPriceData> get currentTradePrice;
   @override
   List<TransactionVolumnData> get currentTradeVolumn;
 
-  /// Create a copy of TransactionChartData
+  /// Create a copy of Transaction
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TransactionChartDataImplCopyWith<_$TransactionChartDataImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$TransactionImplCopyWith<_$TransactionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

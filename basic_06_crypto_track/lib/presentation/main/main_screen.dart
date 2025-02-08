@@ -91,8 +91,8 @@ class MainScreenContent extends StatelessWidget {
         crossAxisSpacing: 8,
         itemBuilder: (context, index) {
           return TransactionWidget(
-            transactionChartData: data,
-            );
+              transactionData:
+                  (index == 3) ? data.copyWith(isPrimary: true) : data);
         },
         childCount: 10,
       ),

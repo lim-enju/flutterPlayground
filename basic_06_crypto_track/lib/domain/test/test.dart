@@ -1,10 +1,12 @@
-import 'package:basic_06_crypto_track/domain/model/transaction_chart_data.dart';
+import 'package:basic_06_crypto_track/domain/model/transaction.dart';
 import 'package:basic_06_crypto_track/domain/model/transaction_price_data.dart';
 import 'package:basic_06_crypto_track/domain/model/transaction_volumn_data.dart';
 
-var data = TransactionChartData(
-    currentTradePrice: currentTradePrice,
-    currentTradeVolumn: currentTradeVolumn);
+var data = Transaction(
+  isPrimary: false,
+  currentTradePrice: currentTradePrice,
+  currentTradeVolumn: currentTradeVolumn,
+);
 
 var currentTradePrice = [
   TransactionPriceData(price: 1.0),

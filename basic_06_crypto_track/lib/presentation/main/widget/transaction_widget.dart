@@ -1,15 +1,15 @@
-import 'package:basic_06_crypto_track/domain/model/transaction_chart_data.dart';
+import 'package:basic_06_crypto_track/domain/model/transaction.dart';
 import 'package:basic_06_crypto_track/domain/model/transaction_price_data.dart';
 import 'package:basic_06_crypto_track/domain/model/transaction_volumn_data.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class TransactionWidget extends StatelessWidget {
-  final TransactionChartData transactionChartData;
+  final Transaction transactionData;
 
   const TransactionWidget({
     super.key,
-    required this.transactionChartData,
+    required this.transactionData,
   });
 
   @override
@@ -19,7 +19,7 @@ class TransactionWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         child: Container(
           padding: EdgeInsets.all(13),
-          color: Colors.grey[900],
+          color: transactionData.isPrimary ? Colors.red[500] : Colors.grey[900],
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,7 +31,7 @@ class TransactionWidget extends StatelessWidget {
               SizedBox(
                 height: 100,
                 child: TransactionChart(
-                  transactionChartData: transactionChartData,
+                  transactionData: transactionData,
                 ),
               ),
               SizedBox(
@@ -85,9 +85,9 @@ class TransactionHeaderWidget extends StatelessWidget {
 }
 
 class TransactionChart extends StatelessWidget {
-  final TransactionChartData transactionChartData;
+  final Transaction transactionData;
 
-  const TransactionChart({super.key, required this.transactionChartData});
+  const TransactionChart({super.key, required this.transactionData});
 
   @override
   Widget build(BuildContext context) {
@@ -95,12 +95,12 @@ class TransactionChart extends StatelessWidget {
       children: [
         Positioned(
           child: TransactionBarChart(
-            volumns: transactionChartData.currentTradeVolumn,
+            volumns: transactionData.currentTradeVolumn,
           ),
         ),
         Positioned(
           child: TransactionLineChart(
-            prices: transactionChartData.currentTradePrice,
+            prices: transactionData.currentTradePrice,
           ),
         ),
       ],
@@ -110,33 +110,41 @@ class TransactionChart extends StatelessWidget {
 
 class TransactionBarChart extends StatelessWidget {
   final List<TransactionVolumnData> volumns;
+  double width = 0.0;
 
-  const TransactionBarChart({
+  TransactionBarChart({
     super.key,
     required this.volumns,
   });
 
   @override
   Widget build(BuildContext context) {
-    return BarChart(
-      BarChartData(
-        alignment: BarChartAlignment.spaceBetween,
-        barGroups: barGroups,
-        borderData: FlBorderData(show: false),
-        gridData: FlGridData(
-          show: false,
-          drawHorizontalLine: false,
-          drawVerticalLine: false,
-        ),
-        titlesData: FlTitlesData(
-          topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-          rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-          leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-          bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-        ),
-        maxY: 10,
-        minY: 0,
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        width = constraints.maxWidth;
+        return BarChart(
+          BarChartData(
+            alignment: BarChartAlignment.spaceBetween,
+            barGroups: barGroups,
+            borderData: FlBorderData(show: false),
+            gridData: FlGridData(
+              show: false,
+              drawHorizontalLine: false,
+              drawVerticalLine: false,
+            ),
+            titlesData: FlTitlesData(
+              topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+              rightTitles:
+                  AxisTitles(sideTitles: SideTitles(showTitles: false)),
+              leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+              bottomTitles:
+                  AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            ),
+            maxY: 10,
+            minY: 0,
+          ),
+        );
+      },
     );
   }
 
@@ -149,12 +157,40 @@ class TransactionBarChart extends StatelessWidget {
             barRods: [
               BarChartRodData(
                 toY: data.volumn,
-                color: Colors.blue,
-              ),
+                width: width / volumns.length,
+                borderRadius: BorderRadius.all(Radius.zero),
+                // color: Colors.amber,
+                gradient: getLinearGradient(4),
+              )
             ],
           )))
       .values
       .toList();
+
+  LinearGradient getLinearGradient(int lineCount) {
+    List<Color> colors = [];
+    List<double> stops = [];
+    List.generate(lineCount, (index) {
+      colors.add(Colors.grey[700] ?? Colors.grey);
+      colors.add(Colors.transparent);
+    });
+
+    var length = 1 / lineCount;
+    var startStops = 0.0;
+
+    List.generate((lineCount).toInt(), (index) {
+      stops.add(startStops);
+      startStops += length;
+      stops.add(startStops);
+    });
+
+    print(stops);
+
+    return LinearGradient(
+      colors: colors,
+      stops: stops,
+    );
+  }
 }
 
 class TransactionLineChart extends StatelessWidget {
@@ -180,7 +216,7 @@ class TransactionLineChart extends StatelessWidget {
         borderData: borderData,
         lineBarsData: lineBarsData1,
         minX: 0,
-        maxX: prices.length.toDouble(),
+        maxX: prices.length.toDouble() - 1,
         maxY: 10,
         minY: 0,
       );
@@ -188,8 +224,7 @@ class TransactionLineChart extends StatelessWidget {
   LineTouchData get lineTouchData1 => LineTouchData(
         handleBuiltInTouches: true,
         touchTooltipData: LineTouchTooltipData(
-          getTooltipColor: (touchedSpot) =>
-              Colors.blueGrey.withValues(alpha: 0.8),
+          getTooltipColor: (touchedSpot) => Colors.white,
         ),
       );
 
@@ -208,7 +243,7 @@ class TransactionLineChart extends StatelessWidget {
   List<LineChartBarData> get lineBarsData1 => [lineChartBarData1_1];
 
   FlBorderData get borderData => FlBorderData(
-        show: false,
+        show: true,
         border: Border(
           bottom: BorderSide(color: Colors.black),
           left: const BorderSide(color: Colors.transparent),
@@ -219,7 +254,7 @@ class TransactionLineChart extends StatelessWidget {
 
   LineChartBarData get lineChartBarData1_1 => LineChartBarData(
         isCurved: true,
-        color: Colors.green,
+        color: Colors.white,
         barWidth: 1,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: false),
