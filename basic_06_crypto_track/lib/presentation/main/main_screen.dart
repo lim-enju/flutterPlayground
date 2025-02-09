@@ -1,3 +1,4 @@
+import 'package:basic_06_crypto_track/data/data_source/transaction_api.dart';
 import 'package:basic_06_crypto_track/domain/test/test.dart';
 import 'package:basic_06_crypto_track/presentation/main/main_viewmodel.dart';
 import 'package:basic_06_crypto_track/presentation/main/widget/transaction_widget.dart';
@@ -91,9 +92,16 @@ class MainScreenContent extends StatelessWidget {
         mainAxisSpacing: 8,
         crossAxisSpacing: 8,
         itemBuilder: (context, index) {
-          return TransactionWidget(
-              transactionData:
-                  (index == 3) ? data.copyWith(isPrimary: true) : data);
+          return FutureBuilder(
+            future: TransactionApi().getCurrentTransactionPrice(),
+            builder: (context, snapshot) {
+              print('response : ${snapshot.data?[0]}');
+              return TransactionWidget(
+                transactionData:
+                    (index == 3) ? data.copyWith(isPrimary: true) : data,
+              );
+            },
+          );
         },
         childCount: 10,
       ),

@@ -184,8 +184,6 @@ class TransactionBarChart extends StatelessWidget {
       stops.add(startStops);
     });
 
-    print(stops);
-
     return LinearGradient(
       colors: colors,
       stops: stops,
