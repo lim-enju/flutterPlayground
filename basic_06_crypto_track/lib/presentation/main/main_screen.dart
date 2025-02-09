@@ -22,52 +22,53 @@ class MainScreen extends StatelessWidget {
             onStretchTrigger: () async {
               // Triggers when stretching
             },
-            stretchTriggerOffset: 100.0,
-            expandedHeight: 50.0,
+            expandedHeight: 200,
+            // stretchTriggerOffset: 100.0,
+            // expandedHeight: 50.0,
             floating: false,
             pinned: false,
             snap: false,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(100.0),
-                    child: Image.asset(
-                      'assets/profile.jpg',
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.cover,
-                    ),
+            actions: [
+              Padding(
+                padding: EdgeInsets.only(left: 10.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100.0),
+                  child: Image.asset(
+                    'assets/profile.jpg',
+                    width: 40,
+                    height: 40,
+                    fit: BoxFit.cover,
                   ),
-                  Spacer(),
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        'assets/search.svg',
-                        width: 30,
-                        height: 30,
-                      ),
-                      Image.asset(
-                        'assets/notification.png',
-                        width: 30,
-                        height: 30,
-                      ),
-                    ],
-                  )
-                ],
+                ),
               ),
-            ),
-          ),
-          SliverPadding(
-            padding: EdgeInsets.only(
-              left: 10,
-              bottom: 10,
-            ),
-            sliver: SliverToBoxAdapter(
-              child: Text(
-                'Transactions\nHistory',
-                style: Theme.of(context).textTheme.displayMedium,
+              Spacer(),
+              SvgPicture.asset(
+                'assets/search.svg',
+                width: 30,
+                height: 30,
+              ),
+              SizedBox(
+                width: 20.0,
+              ),
+              Image.asset(
+                'assets/notification.png',
+                width: 30,
+                height: 30,
+              ),
+              SizedBox(
+                width: 10.0,
+              ),
+            ],
+            flexibleSpace: FlexibleSpaceBar(
+              background: Padding(
+                padding: EdgeInsets.only(
+                  left: 10.0,
+                  top: 100.0,
+                ),
+                child: Text(
+                  'Transactions\nHistory',
+                  style: Theme.of(context).textTheme.displayMedium,
+                ),
               ),
             ),
           ),
