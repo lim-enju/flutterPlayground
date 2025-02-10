@@ -17,9 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Transaction {
   bool get isPrimary => throw _privateConstructorUsedError;
-  List<TransactionPriceData> get currentTradePrice =>
+  TransactionPriceData get currentTradePrice =>
       throw _privateConstructorUsedError;
-  List<TransactionVolumnData> get currentTradeVolumn =>
+  TransactionVolumnData get currentTradeVolumn =>
       throw _privateConstructorUsedError;
 
   /// Create a copy of Transaction
@@ -37,8 +37,11 @@ abstract class $TransactionCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isPrimary,
-      List<TransactionPriceData> currentTradePrice,
-      List<TransactionVolumnData> currentTradeVolumn});
+      TransactionPriceData currentTradePrice,
+      TransactionVolumnData currentTradeVolumn});
+
+  $TransactionPriceDataCopyWith<$Res> get currentTradePrice;
+  $TransactionVolumnDataCopyWith<$Res> get currentTradeVolumn;
 }
 
 /// @nodoc
@@ -68,12 +71,34 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
       currentTradePrice: null == currentTradePrice
           ? _value.currentTradePrice
           : currentTradePrice // ignore: cast_nullable_to_non_nullable
-              as List<TransactionPriceData>,
+              as TransactionPriceData,
       currentTradeVolumn: null == currentTradeVolumn
           ? _value.currentTradeVolumn
           : currentTradeVolumn // ignore: cast_nullable_to_non_nullable
-              as List<TransactionVolumnData>,
+              as TransactionVolumnData,
     ) as $Val);
+  }
+
+  /// Create a copy of Transaction
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $TransactionPriceDataCopyWith<$Res> get currentTradePrice {
+    return $TransactionPriceDataCopyWith<$Res>(_value.currentTradePrice,
+        (value) {
+      return _then(_value.copyWith(currentTradePrice: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Transaction
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $TransactionVolumnDataCopyWith<$Res> get currentTradeVolumn {
+    return $TransactionVolumnDataCopyWith<$Res>(_value.currentTradeVolumn,
+        (value) {
+      return _then(_value.copyWith(currentTradeVolumn: value) as $Val);
+    });
   }
 }
 
@@ -87,8 +112,13 @@ abstract class _$$TransactionImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isPrimary,
-      List<TransactionPriceData> currentTradePrice,
-      List<TransactionVolumnData> currentTradeVolumn});
+      TransactionPriceData currentTradePrice,
+      TransactionVolumnData currentTradeVolumn});
+
+  @override
+  $TransactionPriceDataCopyWith<$Res> get currentTradePrice;
+  @override
+  $TransactionVolumnDataCopyWith<$Res> get currentTradeVolumn;
 }
 
 /// @nodoc
@@ -114,13 +144,13 @@ class __$$TransactionImplCopyWithImpl<$Res>
           : isPrimary // ignore: cast_nullable_to_non_nullable
               as bool,
       currentTradePrice: null == currentTradePrice
-          ? _value._currentTradePrice
+          ? _value.currentTradePrice
           : currentTradePrice // ignore: cast_nullable_to_non_nullable
-              as List<TransactionPriceData>,
+              as TransactionPriceData,
       currentTradeVolumn: null == currentTradeVolumn
-          ? _value._currentTradeVolumn
+          ? _value.currentTradeVolumn
           : currentTradeVolumn // ignore: cast_nullable_to_non_nullable
-              as List<TransactionVolumnData>,
+              as TransactionVolumnData,
     ));
   }
 }
@@ -130,30 +160,15 @@ class __$$TransactionImplCopyWithImpl<$Res>
 class _$TransactionImpl implements _Transaction {
   _$TransactionImpl(
       {required this.isPrimary,
-      required final List<TransactionPriceData> currentTradePrice,
-      required final List<TransactionVolumnData> currentTradeVolumn})
-      : _currentTradePrice = currentTradePrice,
-        _currentTradeVolumn = currentTradeVolumn;
+      required this.currentTradePrice,
+      required this.currentTradeVolumn});
 
   @override
   final bool isPrimary;
-  final List<TransactionPriceData> _currentTradePrice;
   @override
-  List<TransactionPriceData> get currentTradePrice {
-    if (_currentTradePrice is EqualUnmodifiableListView)
-      return _currentTradePrice;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_currentTradePrice);
-  }
-
-  final List<TransactionVolumnData> _currentTradeVolumn;
+  final TransactionPriceData currentTradePrice;
   @override
-  List<TransactionVolumnData> get currentTradeVolumn {
-    if (_currentTradeVolumn is EqualUnmodifiableListView)
-      return _currentTradeVolumn;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_currentTradeVolumn);
-  }
+  final TransactionVolumnData currentTradeVolumn;
 
   @override
   String toString() {
@@ -167,18 +182,15 @@ class _$TransactionImpl implements _Transaction {
             other is _$TransactionImpl &&
             (identical(other.isPrimary, isPrimary) ||
                 other.isPrimary == isPrimary) &&
-            const DeepCollectionEquality()
-                .equals(other._currentTradePrice, _currentTradePrice) &&
-            const DeepCollectionEquality()
-                .equals(other._currentTradeVolumn, _currentTradeVolumn));
+            (identical(other.currentTradePrice, currentTradePrice) ||
+                other.currentTradePrice == currentTradePrice) &&
+            (identical(other.currentTradeVolumn, currentTradeVolumn) ||
+                other.currentTradeVolumn == currentTradeVolumn));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      isPrimary,
-      const DeepCollectionEquality().hash(_currentTradePrice),
-      const DeepCollectionEquality().hash(_currentTradeVolumn));
+      runtimeType, isPrimary, currentTradePrice, currentTradeVolumn);
 
   /// Create a copy of Transaction
   /// with the given fields replaced by the non-null parameter values.
@@ -192,16 +204,16 @@ class _$TransactionImpl implements _Transaction {
 abstract class _Transaction implements Transaction {
   factory _Transaction(
           {required final bool isPrimary,
-          required final List<TransactionPriceData> currentTradePrice,
-          required final List<TransactionVolumnData> currentTradeVolumn}) =
+          required final TransactionPriceData currentTradePrice,
+          required final TransactionVolumnData currentTradeVolumn}) =
       _$TransactionImpl;
 
   @override
   bool get isPrimary;
   @override
-  List<TransactionPriceData> get currentTradePrice;
+  TransactionPriceData get currentTradePrice;
   @override
-  List<TransactionVolumnData> get currentTradeVolumn;
+  TransactionVolumnData get currentTradeVolumn;
 
   /// Create a copy of Transaction
   /// with the given fields replaced by the non-null parameter values.

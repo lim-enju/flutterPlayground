@@ -85,25 +85,20 @@ class MainScreenContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<MainViewmodel>();
+    final state = viewModel.state;
+    print('state $state');
+
     return SliverPadding(
       padding: EdgeInsets.all(10),
       sliver: SliverMasonryGrid.count(
         crossAxisCount: 2,
         mainAxisSpacing: 8,
         crossAxisSpacing: 8,
-        itemBuilder: (context, index) {
-          return FutureBuilder(
-            future: TransactionApi().getCurrentTransactionPrice(),
-            builder: (context, snapshot) {
-              print('response : ${snapshot.data?[0]}');
-              return TransactionWidget(
-                transactionData:
-                    (index == 3) ? data.copyWith(isPrimary: true) : data,
-              );
-            },
-          );
-        },
-        childCount: 10,
+        itemBuilder: (context, index) => TransactionWidget(
+          transactionData: state.transactions[index],
+        ),
+        childCount: state.transactions.length,
       ),
     );
   }

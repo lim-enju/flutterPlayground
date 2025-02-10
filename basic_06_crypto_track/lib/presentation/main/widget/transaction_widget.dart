@@ -95,13 +95,13 @@ class TransactionChart extends StatelessWidget {
       children: [
         Positioned(
           child: TransactionBarChart(
-            volumns: transactionData.currentTradeVolumn,
-          ),
+              volumns: [] //transactionData.currentTradeVolumn,
+              ),
         ),
         Positioned(
           child: TransactionLineChart(
-            prices: transactionData.currentTradePrice,
-          ),
+              prices: [] //transactionData.currentTradePrice,
+              ),
         ),
       ],
     );
