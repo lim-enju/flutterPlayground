@@ -7,8 +7,9 @@ part 'transaction.freezed.dart';
 @freezed
 class Transaction with _$Transaction {
   factory Transaction({
+    required String market,
     required bool isPrimary,
-    required TransactionPriceData currentTradePrice,
-    required TransactionVolumnData currentTradeVolumn,
+    @Default([]) List<TransactionPriceData> currentTradePrice,
+    @Default([]) List<TransactionVolumnData> currentTradeVolumn,
   }) = _Transaction;
 }

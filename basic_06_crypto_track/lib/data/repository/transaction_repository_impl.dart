@@ -14,6 +14,7 @@ class TransactionRepositoryImpl implements TransactionRepository {
     List<Transaction> result = [];
 
     for (var element in markets) {
+      // 실시간 현재가 정보 조회
       List<TransactionDto> transactions =
           await TransactionApi().getCurrentTransactionPrice(element);
       TransactionDto? priceInfo = transactions.firstOrNull;
@@ -21,9 +22,14 @@ class TransactionRepositoryImpl implements TransactionRepository {
 
       result.add(
         Transaction(
+          market: priceInfo.market,
           isPrimary: false,
-          currentTradePrice: TransactionPriceData(price: priceInfo.trade_price),
-          currentTradeVolumn: TransactionVolumnData(volumn: 0),
+          currentTradePrice: [
+            TransactionPriceData(price: priceInfo.trade_price),
+          ],
+          currentTradeVolumn: [
+            TransactionVolumnData(volumn: 0),
+          ],
         ),
       );
     }

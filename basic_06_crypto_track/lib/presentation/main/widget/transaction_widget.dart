@@ -95,13 +95,13 @@ class TransactionChart extends StatelessWidget {
       children: [
         Positioned(
           child: TransactionBarChart(
-              volumns: [] //transactionData.currentTradeVolumn,
-              ),
+            volumns: transactionData.currentTradeVolumn,
+          ),
         ),
         Positioned(
           child: TransactionLineChart(
-              prices: [] //transactionData.currentTradePrice,
-              ),
+            prices: transactionData.currentTradePrice,
+          ),
         ),
       ],
     );
@@ -215,8 +215,8 @@ class TransactionLineChart extends StatelessWidget {
         lineBarsData: lineBarsData1,
         minX: 0,
         maxX: prices.length.toDouble() - 1,
-        maxY: 10,
-        minY: 0,
+        maxY: 247350000.0,
+        minY: 100000000.0,
       );
 
   LineTouchData get lineTouchData1 => LineTouchData(
