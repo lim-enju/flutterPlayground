@@ -1,5 +1,5 @@
 import 'package:basic_06_crypto_track/data/dto/transaction_price_dto.dart';
-import 'package:basic_06_crypto_track/data/dto/transaction_volumne_dto.dart';
+import 'package:basic_06_crypto_track/data/dto/transaction_volume_dto.dart';
 import 'package:dio/dio.dart';
 
 class TransactionApi {
@@ -13,11 +13,11 @@ class TransactionApi {
     return data;
   }
 
-  Future<List<TransactionVolumneDto>> getCurrentTransactionVolume(
+  Future<List<TransactionVolumeDto>> getCurrentTransactionVolume(
       String marketName) async {
     final response = await _dio.getUri(
-        Uri.parse('https://api.upbit.com/v1/trades/ticks?market$marketName'));
-    final data = TransactionVolumneDto.fromJsonList(response.data);
+        Uri.parse('https://api.upbit.com/v1/trades/ticks?market=$marketName'));
+    final data = TransactionVolumeDto.fromJsonList(response.data);
     return data;
   }
 }

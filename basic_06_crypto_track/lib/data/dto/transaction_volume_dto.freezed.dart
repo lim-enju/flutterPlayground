@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'transaction_volumne_dto.dart';
+part of 'transaction_volume_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,65 +14,74 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-TransactionVolumneDto _$TransactionVolumneDtoFromJson(
-    Map<String, dynamic> json) {
-  return _TransactionVolumneDto.fromJson(json);
+TransactionVolumeDto _$TransactionVolumeDtoFromJson(Map<String, dynamic> json) {
+  return _TransactionVolumeDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TransactionVolumneDto {
+mixin _$TransactionVolumeDto {
+  @JsonKey(name: 'market')
   String get market => throw _privateConstructorUsedError;
+  @JsonKey(name: 'trade_date_utc')
   String get tradeDateUtc => throw _privateConstructorUsedError;
+  @JsonKey(name: 'trade_time_utc')
   String get tradeTimeUtc => throw _privateConstructorUsedError;
+  @JsonKey(name: 'timestamp')
   int get timestamp => throw _privateConstructorUsedError;
+  @JsonKey(name: 'trade_price')
   double get tradePrice => throw _privateConstructorUsedError;
+  @JsonKey(name: 'trade_volume')
   double get tradeVolume => throw _privateConstructorUsedError;
+  @JsonKey(name: 'prev_closing_price')
   double get prevClosingPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: 'change_price')
   double get changePrice => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ask_bid')
   String get askBid => throw _privateConstructorUsedError;
+  @JsonKey(name: 'sequential_id')
   int get sequentialId => throw _privateConstructorUsedError;
 
-  /// Serializes this TransactionVolumneDto to a JSON map.
+  /// Serializes this TransactionVolumeDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of TransactionVolumneDto
+  /// Create a copy of TransactionVolumeDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TransactionVolumneDtoCopyWith<TransactionVolumneDto> get copyWith =>
+  $TransactionVolumeDtoCopyWith<TransactionVolumeDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TransactionVolumneDtoCopyWith<$Res> {
-  factory $TransactionVolumneDtoCopyWith(TransactionVolumneDto value,
-          $Res Function(TransactionVolumneDto) then) =
-      _$TransactionVolumneDtoCopyWithImpl<$Res, TransactionVolumneDto>;
+abstract class $TransactionVolumeDtoCopyWith<$Res> {
+  factory $TransactionVolumeDtoCopyWith(TransactionVolumeDto value,
+          $Res Function(TransactionVolumeDto) then) =
+      _$TransactionVolumeDtoCopyWithImpl<$Res, TransactionVolumeDto>;
   @useResult
   $Res call(
-      {String market,
-      String tradeDateUtc,
-      String tradeTimeUtc,
-      int timestamp,
-      double tradePrice,
-      double tradeVolume,
-      double prevClosingPrice,
-      double changePrice,
-      String askBid,
-      int sequentialId});
+      {@JsonKey(name: 'market') String market,
+      @JsonKey(name: 'trade_date_utc') String tradeDateUtc,
+      @JsonKey(name: 'trade_time_utc') String tradeTimeUtc,
+      @JsonKey(name: 'timestamp') int timestamp,
+      @JsonKey(name: 'trade_price') double tradePrice,
+      @JsonKey(name: 'trade_volume') double tradeVolume,
+      @JsonKey(name: 'prev_closing_price') double prevClosingPrice,
+      @JsonKey(name: 'change_price') double changePrice,
+      @JsonKey(name: 'ask_bid') String askBid,
+      @JsonKey(name: 'sequential_id') int sequentialId});
 }
 
 /// @nodoc
-class _$TransactionVolumneDtoCopyWithImpl<$Res,
-        $Val extends TransactionVolumneDto>
-    implements $TransactionVolumneDtoCopyWith<$Res> {
-  _$TransactionVolumneDtoCopyWithImpl(this._value, this._then);
+class _$TransactionVolumeDtoCopyWithImpl<$Res,
+        $Val extends TransactionVolumeDto>
+    implements $TransactionVolumeDtoCopyWith<$Res> {
+  _$TransactionVolumeDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TransactionVolumneDto
+  /// Create a copy of TransactionVolumeDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -134,37 +143,35 @@ class _$TransactionVolumneDtoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$TransactionVolumneDtoImplCopyWith<$Res>
-    implements $TransactionVolumneDtoCopyWith<$Res> {
-  factory _$$TransactionVolumneDtoImplCopyWith(
-          _$TransactionVolumneDtoImpl value,
-          $Res Function(_$TransactionVolumneDtoImpl) then) =
-      __$$TransactionVolumneDtoImplCopyWithImpl<$Res>;
+abstract class _$$TransactionVolumeDtoImplCopyWith<$Res>
+    implements $TransactionVolumeDtoCopyWith<$Res> {
+  factory _$$TransactionVolumeDtoImplCopyWith(_$TransactionVolumeDtoImpl value,
+          $Res Function(_$TransactionVolumeDtoImpl) then) =
+      __$$TransactionVolumeDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String market,
-      String tradeDateUtc,
-      String tradeTimeUtc,
-      int timestamp,
-      double tradePrice,
-      double tradeVolume,
-      double prevClosingPrice,
-      double changePrice,
-      String askBid,
-      int sequentialId});
+      {@JsonKey(name: 'market') String market,
+      @JsonKey(name: 'trade_date_utc') String tradeDateUtc,
+      @JsonKey(name: 'trade_time_utc') String tradeTimeUtc,
+      @JsonKey(name: 'timestamp') int timestamp,
+      @JsonKey(name: 'trade_price') double tradePrice,
+      @JsonKey(name: 'trade_volume') double tradeVolume,
+      @JsonKey(name: 'prev_closing_price') double prevClosingPrice,
+      @JsonKey(name: 'change_price') double changePrice,
+      @JsonKey(name: 'ask_bid') String askBid,
+      @JsonKey(name: 'sequential_id') int sequentialId});
 }
 
 /// @nodoc
-class __$$TransactionVolumneDtoImplCopyWithImpl<$Res>
-    extends _$TransactionVolumneDtoCopyWithImpl<$Res,
-        _$TransactionVolumneDtoImpl>
-    implements _$$TransactionVolumneDtoImplCopyWith<$Res> {
-  __$$TransactionVolumneDtoImplCopyWithImpl(_$TransactionVolumneDtoImpl _value,
-      $Res Function(_$TransactionVolumneDtoImpl) _then)
+class __$$TransactionVolumeDtoImplCopyWithImpl<$Res>
+    extends _$TransactionVolumeDtoCopyWithImpl<$Res, _$TransactionVolumeDtoImpl>
+    implements _$$TransactionVolumeDtoImplCopyWith<$Res> {
+  __$$TransactionVolumeDtoImplCopyWithImpl(_$TransactionVolumeDtoImpl _value,
+      $Res Function(_$TransactionVolumeDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TransactionVolumneDto
+  /// Create a copy of TransactionVolumeDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -180,7 +187,7 @@ class __$$TransactionVolumneDtoImplCopyWithImpl<$Res>
     Object? askBid = null,
     Object? sequentialId = null,
   }) {
-    return _then(_$TransactionVolumneDtoImpl(
+    return _then(_$TransactionVolumeDtoImpl(
       market: null == market
           ? _value.market
           : market // ignore: cast_nullable_to_non_nullable
@@ -227,54 +234,64 @@ class __$$TransactionVolumneDtoImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TransactionVolumneDtoImpl extends _TransactionVolumneDto {
-  const _$TransactionVolumneDtoImpl(
-      {required this.market,
-      required this.tradeDateUtc,
-      required this.tradeTimeUtc,
-      required this.timestamp,
-      required this.tradePrice,
-      required this.tradeVolume,
-      required this.prevClosingPrice,
-      required this.changePrice,
-      required this.askBid,
-      required this.sequentialId})
+class _$TransactionVolumeDtoImpl extends _TransactionVolumeDto {
+  _$TransactionVolumeDtoImpl(
+      {@JsonKey(name: 'market') required this.market,
+      @JsonKey(name: 'trade_date_utc') required this.tradeDateUtc,
+      @JsonKey(name: 'trade_time_utc') required this.tradeTimeUtc,
+      @JsonKey(name: 'timestamp') required this.timestamp,
+      @JsonKey(name: 'trade_price') required this.tradePrice,
+      @JsonKey(name: 'trade_volume') required this.tradeVolume,
+      @JsonKey(name: 'prev_closing_price') required this.prevClosingPrice,
+      @JsonKey(name: 'change_price') required this.changePrice,
+      @JsonKey(name: 'ask_bid') required this.askBid,
+      @JsonKey(name: 'sequential_id') required this.sequentialId})
       : super._();
 
-  factory _$TransactionVolumneDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TransactionVolumneDtoImplFromJson(json);
+  factory _$TransactionVolumeDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TransactionVolumeDtoImplFromJson(json);
 
   @override
+  @JsonKey(name: 'market')
   final String market;
   @override
+  @JsonKey(name: 'trade_date_utc')
   final String tradeDateUtc;
   @override
+  @JsonKey(name: 'trade_time_utc')
   final String tradeTimeUtc;
   @override
+  @JsonKey(name: 'timestamp')
   final int timestamp;
   @override
+  @JsonKey(name: 'trade_price')
   final double tradePrice;
   @override
+  @JsonKey(name: 'trade_volume')
   final double tradeVolume;
   @override
+  @JsonKey(name: 'prev_closing_price')
   final double prevClosingPrice;
   @override
+  @JsonKey(name: 'change_price')
   final double changePrice;
   @override
+  @JsonKey(name: 'ask_bid')
   final String askBid;
   @override
+  @JsonKey(name: 'sequential_id')
   final int sequentialId;
 
   @override
   String toString() {
-    return 'TransactionVolumneDto(market: $market, tradeDateUtc: $tradeDateUtc, tradeTimeUtc: $tradeTimeUtc, timestamp: $timestamp, tradePrice: $tradePrice, tradeVolume: $tradeVolume, prevClosingPrice: $prevClosingPrice, changePrice: $changePrice, askBid: $askBid, sequentialId: $sequentialId)';
+    return 'TransactionVolumeDto(market: $market, tradeDateUtc: $tradeDateUtc, tradeTimeUtc: $tradeTimeUtc, timestamp: $timestamp, tradePrice: $tradePrice, tradeVolume: $tradeVolume, prevClosingPrice: $prevClosingPrice, changePrice: $changePrice, askBid: $askBid, sequentialId: $sequentialId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TransactionVolumneDtoImpl &&
+            other is _$TransactionVolumeDtoImpl &&
             (identical(other.market, market) || other.market == market) &&
             (identical(other.tradeDateUtc, tradeDateUtc) ||
                 other.tradeDateUtc == tradeDateUtc) &&
@@ -310,65 +327,78 @@ class _$TransactionVolumneDtoImpl extends _TransactionVolumneDto {
       askBid,
       sequentialId);
 
-  /// Create a copy of TransactionVolumneDto
+  /// Create a copy of TransactionVolumeDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TransactionVolumneDtoImplCopyWith<_$TransactionVolumneDtoImpl>
-      get copyWith => __$$TransactionVolumneDtoImplCopyWithImpl<
-          _$TransactionVolumneDtoImpl>(this, _$identity);
+  _$$TransactionVolumeDtoImplCopyWith<_$TransactionVolumeDtoImpl>
+      get copyWith =>
+          __$$TransactionVolumeDtoImplCopyWithImpl<_$TransactionVolumeDtoImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TransactionVolumneDtoImplToJson(
+    return _$$TransactionVolumeDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _TransactionVolumneDto extends TransactionVolumneDto {
-  const factory _TransactionVolumneDto(
-      {required final String market,
-      required final String tradeDateUtc,
-      required final String tradeTimeUtc,
-      required final int timestamp,
-      required final double tradePrice,
-      required final double tradeVolume,
-      required final double prevClosingPrice,
-      required final double changePrice,
-      required final String askBid,
-      required final int sequentialId}) = _$TransactionVolumneDtoImpl;
-  const _TransactionVolumneDto._() : super._();
+abstract class _TransactionVolumeDto extends TransactionVolumeDto {
+  factory _TransactionVolumeDto(
+          {@JsonKey(name: 'market') required final String market,
+          @JsonKey(name: 'trade_date_utc') required final String tradeDateUtc,
+          @JsonKey(name: 'trade_time_utc') required final String tradeTimeUtc,
+          @JsonKey(name: 'timestamp') required final int timestamp,
+          @JsonKey(name: 'trade_price') required final double tradePrice,
+          @JsonKey(name: 'trade_volume') required final double tradeVolume,
+          @JsonKey(name: 'prev_closing_price')
+          required final double prevClosingPrice,
+          @JsonKey(name: 'change_price') required final double changePrice,
+          @JsonKey(name: 'ask_bid') required final String askBid,
+          @JsonKey(name: 'sequential_id') required final int sequentialId}) =
+      _$TransactionVolumeDtoImpl;
+  _TransactionVolumeDto._() : super._();
 
-  factory _TransactionVolumneDto.fromJson(Map<String, dynamic> json) =
-      _$TransactionVolumneDtoImpl.fromJson;
+  factory _TransactionVolumeDto.fromJson(Map<String, dynamic> json) =
+      _$TransactionVolumeDtoImpl.fromJson;
 
   @override
+  @JsonKey(name: 'market')
   String get market;
   @override
+  @JsonKey(name: 'trade_date_utc')
   String get tradeDateUtc;
   @override
+  @JsonKey(name: 'trade_time_utc')
   String get tradeTimeUtc;
   @override
+  @JsonKey(name: 'timestamp')
   int get timestamp;
   @override
+  @JsonKey(name: 'trade_price')
   double get tradePrice;
   @override
+  @JsonKey(name: 'trade_volume')
   double get tradeVolume;
   @override
+  @JsonKey(name: 'prev_closing_price')
   double get prevClosingPrice;
   @override
+  @JsonKey(name: 'change_price')
   double get changePrice;
   @override
+  @JsonKey(name: 'ask_bid')
   String get askBid;
   @override
+  @JsonKey(name: 'sequential_id')
   int get sequentialId;
 
-  /// Create a copy of TransactionVolumneDto
+  /// Create a copy of TransactionVolumeDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TransactionVolumneDtoImplCopyWith<_$TransactionVolumneDtoImpl>
+  _$$TransactionVolumeDtoImplCopyWith<_$TransactionVolumeDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

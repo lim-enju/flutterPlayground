@@ -95,7 +95,7 @@ class TransactionChart extends StatelessWidget {
       children: [
         Positioned(
           child: TransactionBarChart(
-            volumns: transactionData.currentTradeVolumn,
+            transaction: transactionData,
           ),
         ),
         Positioned(
@@ -109,12 +109,12 @@ class TransactionChart extends StatelessWidget {
 }
 
 class TransactionBarChart extends StatelessWidget {
-  final List<TransactionVolumnData> volumns;
+  final Transaction transaction;
   double width = 0.0;
 
   TransactionBarChart({
     super.key,
-    required this.volumns,
+    required this.transaction,
   });
 
   @override
@@ -123,6 +123,7 @@ class TransactionBarChart extends StatelessWidget {
       builder: (context, constraints) {
         width = constraints.maxWidth;
         return BarChart(
+          duration: Duration.zero,
           BarChartData(
             alignment: BarChartAlignment.spaceBetween,
             barGroups: barGroups,
@@ -140,7 +141,7 @@ class TransactionBarChart extends StatelessWidget {
               bottomTitles:
                   AxisTitles(sideTitles: SideTitles(showTitles: false)),
             ),
-            maxY: 10,
+            maxY: 1,
             minY: 0,
           ),
         );
@@ -148,7 +149,7 @@ class TransactionBarChart extends StatelessWidget {
     );
   }
 
-  List<BarChartGroupData> get barGroups => volumns
+  List<BarChartGroupData> get barGroups => transaction.currentTradeVolumn
       .asMap()
       .map((index, data) => MapEntry(
           index,
@@ -157,7 +158,7 @@ class TransactionBarChart extends StatelessWidget {
             barRods: [
               BarChartRodData(
                 toY: data.volumn,
-                width: width / volumns.length,
+                width: width / 10,
                 borderRadius: BorderRadius.all(Radius.zero),
                 // color: Colors.amber,
                 gradient: getLinearGradient(4),
@@ -203,7 +204,7 @@ class TransactionLineChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return LineChart(
       sampleData1,
-      duration: const Duration(milliseconds: 250),
+      duration: Duration.zero,
     );
   }
 

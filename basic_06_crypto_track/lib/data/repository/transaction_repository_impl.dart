@@ -1,6 +1,6 @@
 import 'package:basic_06_crypto_track/data/data_source/transaction_api.dart';
 import 'package:basic_06_crypto_track/data/dto/transaction_price_dto.dart';
-import 'package:basic_06_crypto_track/data/dto/transaction_volumne_dto.dart';
+import 'package:basic_06_crypto_track/data/dto/transaction_volume_dto.dart';
 import 'package:basic_06_crypto_track/domain/model/transaction.dart';
 import 'package:basic_06_crypto_track/domain/model/transaction_price_data.dart';
 import 'package:basic_06_crypto_track/domain/model/transaction_volumn_data.dart';
@@ -23,9 +23,9 @@ class TransactionRepositoryImpl implements TransactionRepository {
         if (priceInfo == null) continue;
 
         // 실시간 볼륨 조회
-        List<TransactionVolumneDto> transactionVolumneDto =
+        List<TransactionVolumeDto> transactionVolumneDto =
             await TransactionApi().getCurrentTransactionVolume(element);
-        TransactionVolumneDto? volumnInfo = transactionVolumneDto.firstOrNull;
+        TransactionVolumeDto? volumnInfo = transactionVolumneDto.firstOrNull;
         if (volumnInfo == null) continue;
 
         result.add(
