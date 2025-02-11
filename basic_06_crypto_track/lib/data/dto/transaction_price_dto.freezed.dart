@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'transaction_dto.dart';
+part of 'transaction_price_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-TransactionDto _$TransactionDtoFromJson(Map<String, dynamic> json) {
-  return _TransactionDto.fromJson(json);
+TransactionPriceDto _$TransactionPriceDtoFromJson(Map<String, dynamic> json) {
+  return _TransactionPriceDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TransactionDto {
+mixin _$TransactionPriceDto {
   String get market => throw _privateConstructorUsedError;
   String get trade_date => throw _privateConstructorUsedError;
   String get trade_time => throw _privateConstructorUsedError;
@@ -47,21 +47,21 @@ mixin _$TransactionDto {
   String get lowest_52_week_date => throw _privateConstructorUsedError;
   int get timestamp => throw _privateConstructorUsedError;
 
-  /// Serializes this TransactionDto to a JSON map.
+  /// Serializes this TransactionPriceDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of TransactionDto
+  /// Create a copy of TransactionPriceDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TransactionDtoCopyWith<TransactionDto> get copyWith =>
+  $TransactionPriceDtoCopyWith<TransactionPriceDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TransactionDtoCopyWith<$Res> {
-  factory $TransactionDtoCopyWith(
-          TransactionDto value, $Res Function(TransactionDto) then) =
-      _$TransactionDtoCopyWithImpl<$Res, TransactionDto>;
+abstract class $TransactionPriceDtoCopyWith<$Res> {
+  factory $TransactionPriceDtoCopyWith(
+          TransactionPriceDto value, $Res Function(TransactionPriceDto) then) =
+      _$TransactionPriceDtoCopyWithImpl<$Res, TransactionPriceDto>;
   @useResult
   $Res call(
       {String market,
@@ -93,16 +93,16 @@ abstract class $TransactionDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TransactionDtoCopyWithImpl<$Res, $Val extends TransactionDto>
-    implements $TransactionDtoCopyWith<$Res> {
-  _$TransactionDtoCopyWithImpl(this._value, this._then);
+class _$TransactionPriceDtoCopyWithImpl<$Res, $Val extends TransactionPriceDto>
+    implements $TransactionPriceDtoCopyWith<$Res> {
+  _$TransactionPriceDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TransactionDto
+  /// Create a copy of TransactionPriceDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -244,11 +244,11 @@ class _$TransactionDtoCopyWithImpl<$Res, $Val extends TransactionDto>
 }
 
 /// @nodoc
-abstract class _$$TransactionDtoImplCopyWith<$Res>
-    implements $TransactionDtoCopyWith<$Res> {
-  factory _$$TransactionDtoImplCopyWith(_$TransactionDtoImpl value,
-          $Res Function(_$TransactionDtoImpl) then) =
-      __$$TransactionDtoImplCopyWithImpl<$Res>;
+abstract class _$$TransactionPriceDtoImplCopyWith<$Res>
+    implements $TransactionPriceDtoCopyWith<$Res> {
+  factory _$$TransactionPriceDtoImplCopyWith(_$TransactionPriceDtoImpl value,
+          $Res Function(_$TransactionPriceDtoImpl) then) =
+      __$$TransactionPriceDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -281,14 +281,14 @@ abstract class _$$TransactionDtoImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TransactionDtoImplCopyWithImpl<$Res>
-    extends _$TransactionDtoCopyWithImpl<$Res, _$TransactionDtoImpl>
-    implements _$$TransactionDtoImplCopyWith<$Res> {
-  __$$TransactionDtoImplCopyWithImpl(
-      _$TransactionDtoImpl _value, $Res Function(_$TransactionDtoImpl) _then)
+class __$$TransactionPriceDtoImplCopyWithImpl<$Res>
+    extends _$TransactionPriceDtoCopyWithImpl<$Res, _$TransactionPriceDtoImpl>
+    implements _$$TransactionPriceDtoImplCopyWith<$Res> {
+  __$$TransactionPriceDtoImplCopyWithImpl(_$TransactionPriceDtoImpl _value,
+      $Res Function(_$TransactionPriceDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TransactionDto
+  /// Create a copy of TransactionPriceDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -320,7 +320,7 @@ class __$$TransactionDtoImplCopyWithImpl<$Res>
     Object? lowest_52_week_date = null,
     Object? timestamp = null,
   }) {
-    return _then(_$TransactionDtoImpl(
+    return _then(_$TransactionPriceDtoImpl(
       market: null == market
           ? _value.market
           : market // ignore: cast_nullable_to_non_nullable
@@ -431,8 +431,8 @@ class __$$TransactionDtoImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TransactionDtoImpl extends _TransactionDto {
-  const _$TransactionDtoImpl(
+class _$TransactionPriceDtoImpl extends _TransactionPriceDto {
+  const _$TransactionPriceDtoImpl(
       {required this.market,
       required this.trade_date,
       required this.trade_time,
@@ -461,8 +461,8 @@ class _$TransactionDtoImpl extends _TransactionDto {
       required this.timestamp})
       : super._();
 
-  factory _$TransactionDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TransactionDtoImplFromJson(json);
+  factory _$TransactionPriceDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TransactionPriceDtoImplFromJson(json);
 
   @override
   final String market;
@@ -519,14 +519,14 @@ class _$TransactionDtoImpl extends _TransactionDto {
 
   @override
   String toString() {
-    return 'TransactionDto(market: $market, trade_date: $trade_date, trade_time: $trade_time, trade_date_kst: $trade_date_kst, trade_time_kst: $trade_time_kst, trade_timestamp: $trade_timestamp, opening_price: $opening_price, high_price: $high_price, low_price: $low_price, trade_price: $trade_price, prev_closing_price: $prev_closing_price, change: $change, change_price: $change_price, change_rate: $change_rate, signed_change_price: $signed_change_price, signed_change_rate: $signed_change_rate, trade_volume: $trade_volume, acc_trade_price: $acc_trade_price, acc_trade_price_24h: $acc_trade_price_24h, acc_trade_volume: $acc_trade_volume, acc_trade_volume_24h: $acc_trade_volume_24h, highest_52_week_price: $highest_52_week_price, highest_52_week_date: $highest_52_week_date, lowest_52_week_price: $lowest_52_week_price, lowest_52_week_date: $lowest_52_week_date, timestamp: $timestamp)';
+    return 'TransactionPriceDto(market: $market, trade_date: $trade_date, trade_time: $trade_time, trade_date_kst: $trade_date_kst, trade_time_kst: $trade_time_kst, trade_timestamp: $trade_timestamp, opening_price: $opening_price, high_price: $high_price, low_price: $low_price, trade_price: $trade_price, prev_closing_price: $prev_closing_price, change: $change, change_price: $change_price, change_rate: $change_rate, signed_change_price: $signed_change_price, signed_change_rate: $signed_change_rate, trade_volume: $trade_volume, acc_trade_price: $acc_trade_price, acc_trade_price_24h: $acc_trade_price_24h, acc_trade_volume: $acc_trade_volume, acc_trade_volume_24h: $acc_trade_volume_24h, highest_52_week_price: $highest_52_week_price, highest_52_week_date: $highest_52_week_date, lowest_52_week_price: $lowest_52_week_price, lowest_52_week_date: $lowest_52_week_date, timestamp: $timestamp)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TransactionDtoImpl &&
+            other is _$TransactionPriceDtoImpl &&
             (identical(other.market, market) || other.market == market) &&
             (identical(other.trade_date, trade_date) ||
                 other.trade_date == trade_date) &&
@@ -611,25 +611,25 @@ class _$TransactionDtoImpl extends _TransactionDto {
         timestamp
       ]);
 
-  /// Create a copy of TransactionDto
+  /// Create a copy of TransactionPriceDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TransactionDtoImplCopyWith<_$TransactionDtoImpl> get copyWith =>
-      __$$TransactionDtoImplCopyWithImpl<_$TransactionDtoImpl>(
+  _$$TransactionPriceDtoImplCopyWith<_$TransactionPriceDtoImpl> get copyWith =>
+      __$$TransactionPriceDtoImplCopyWithImpl<_$TransactionPriceDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TransactionDtoImplToJson(
+    return _$$TransactionPriceDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _TransactionDto extends TransactionDto {
-  const factory _TransactionDto(
+abstract class _TransactionPriceDto extends TransactionPriceDto {
+  const factory _TransactionPriceDto(
       {required final String market,
       required final String trade_date,
       required final String trade_time,
@@ -655,11 +655,11 @@ abstract class _TransactionDto extends TransactionDto {
       required final String highest_52_week_date,
       required final double lowest_52_week_price,
       required final String lowest_52_week_date,
-      required final int timestamp}) = _$TransactionDtoImpl;
-  const _TransactionDto._() : super._();
+      required final int timestamp}) = _$TransactionPriceDtoImpl;
+  const _TransactionPriceDto._() : super._();
 
-  factory _TransactionDto.fromJson(Map<String, dynamic> json) =
-      _$TransactionDtoImpl.fromJson;
+  factory _TransactionPriceDto.fromJson(Map<String, dynamic> json) =
+      _$TransactionPriceDtoImpl.fromJson;
 
   @override
   String get market;
@@ -714,10 +714,10 @@ abstract class _TransactionDto extends TransactionDto {
   @override
   int get timestamp;
 
-  /// Create a copy of TransactionDto
+  /// Create a copy of TransactionPriceDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TransactionDtoImplCopyWith<_$TransactionDtoImpl> get copyWith =>
+  _$$TransactionPriceDtoImplCopyWith<_$TransactionPriceDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

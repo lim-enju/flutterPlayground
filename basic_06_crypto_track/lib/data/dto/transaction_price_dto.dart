@@ -1,13 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'transaction_dto.freezed.dart';
-part 'transaction_dto.g.dart';
+part 'transaction_price_dto.freezed.dart';
+part 'transaction_price_dto.g.dart';
 
 @freezed
-class TransactionDto with _$TransactionDto {
-  const TransactionDto._();
+class TransactionPriceDto with _$TransactionPriceDto {
+  const TransactionPriceDto._();
 
-  const factory TransactionDto({
+  const factory TransactionPriceDto({
     required String market,
     required String trade_date,
     required String trade_time,
@@ -34,14 +34,15 @@ class TransactionDto with _$TransactionDto {
     required double lowest_52_week_price,
     required String lowest_52_week_date,
     required int timestamp,
-  }) = _TransactionDto;
+  }) = _TransactionPriceDto;
 
-  factory TransactionDto.fromJson(Map<String, dynamic> json) =>
-      _$TransactionDtoFromJson(json);
+  factory TransactionPriceDto.fromJson(Map<String, dynamic> json) =>
+      _$TransactionPriceDtoFromJson(json);
 
-  static List<TransactionDto> fromJsonList(List<dynamic> jsonList) {
+  static List<TransactionPriceDto> fromJsonList(List<dynamic> jsonList) {
     return jsonList
-        .map((json) => TransactionDto.fromJson(json as Map<String, dynamic>))
+        .map((json) =>
+            TransactionPriceDto.fromJson(json as Map<String, dynamic>))
         .toList();
   }
 }

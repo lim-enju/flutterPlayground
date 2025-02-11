@@ -1,5 +1,6 @@
 import 'package:basic_06_crypto_track/data/data_source/transaction_api.dart';
-import 'package:basic_06_crypto_track/data/dto/transaction_dto.dart';
+import 'package:basic_06_crypto_track/data/dto/transaction_price_dto.dart';
+import 'package:basic_06_crypto_track/data/dto/transaction_volumne_dto.dart';
 import 'package:basic_06_crypto_track/domain/model/transaction.dart';
 import 'package:basic_06_crypto_track/domain/model/transaction_price_data.dart';
 import 'package:basic_06_crypto_track/domain/model/transaction_volumn_data.dart';
@@ -16,10 +17,16 @@ class TransactionRepositoryImpl implements TransactionRepository {
 
       for (var element in markets) {
         // 실시간 현재가 정보 조회
-        List<TransactionDto> transactions =
+        List<TransactionPriceDto> transactionPriceDto =
             await TransactionApi().getCurrentTransactionPrice(element);
-        TransactionDto? priceInfo = transactions.firstOrNull;
+        TransactionPriceDto? priceInfo = transactionPriceDto.firstOrNull;
         if (priceInfo == null) continue;
+
+        // 실시간 볼륨 조회
+        List<TransactionVolumneDto> transactionVolumneDto =
+            await TransactionApi().getCurrentTransactionVolume(element);
+        TransactionVolumneDto? volumnInfo = transactionVolumneDto.firstOrNull;
+        if (volumnInfo == null) continue;
 
         result.add(
           Transaction(
@@ -31,7 +38,7 @@ class TransactionRepositoryImpl implements TransactionRepository {
               TransactionPriceData(price: priceInfo.trade_price),
             ],
             currentTradeVolumn: [
-              TransactionVolumnData(volumn: 0),
+              TransactionVolumnData(volumn: volumnInfo.tradeVolume),
             ],
           ),
         );

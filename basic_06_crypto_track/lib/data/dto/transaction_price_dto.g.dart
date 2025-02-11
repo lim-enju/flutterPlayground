@@ -1,13 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'transaction_dto.dart';
+part of 'transaction_price_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TransactionDtoImpl _$$TransactionDtoImplFromJson(Map<String, dynamic> json) =>
-    _$TransactionDtoImpl(
+_$TransactionPriceDtoImpl _$$TransactionPriceDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TransactionPriceDtoImpl(
       market: json['market'] as String,
       trade_date: json['trade_date'] as String,
       trade_time: json['trade_time'] as String,
@@ -36,8 +37,8 @@ _$TransactionDtoImpl _$$TransactionDtoImplFromJson(Map<String, dynamic> json) =>
       timestamp: (json['timestamp'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$TransactionDtoImplToJson(
-        _$TransactionDtoImpl instance) =>
+Map<String, dynamic> _$$TransactionPriceDtoImplToJson(
+        _$TransactionPriceDtoImpl instance) =>
     <String, dynamic>{
       'market': instance.market,
       'trade_date': instance.trade_date,
