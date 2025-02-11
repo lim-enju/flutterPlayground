@@ -9,6 +9,8 @@ class Transaction with _$Transaction {
   factory Transaction({
     required String market,
     required bool isPrimary,
+    required double highPrice,
+    required double lowPrice,
     @Default([]) List<TransactionPriceData> currentTradePrice,
     @Default([]) List<TransactionVolumnData> currentTradeVolumn,
   }) = _Transaction;

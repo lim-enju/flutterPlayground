@@ -100,7 +100,7 @@ class TransactionChart extends StatelessWidget {
         ),
         Positioned(
           child: TransactionLineChart(
-            prices: transactionData.currentTradePrice,
+            transaction: transactionData,
           ),
         ),
       ],
@@ -192,11 +192,11 @@ class TransactionBarChart extends StatelessWidget {
 }
 
 class TransactionLineChart extends StatelessWidget {
-  final List<TransactionPriceData> prices;
+  final Transaction transaction;
 
   const TransactionLineChart({
     super.key,
-    required this.prices,
+    required this.transaction,
   });
 
   @override
@@ -214,9 +214,9 @@ class TransactionLineChart extends StatelessWidget {
         borderData: borderData,
         lineBarsData: lineBarsData1,
         minX: 0,
-        maxX: prices.length.toDouble() - 1,
-        maxY: 247350000.0,
-        minY: 100000000.0,
+        maxX: 10,
+        maxY: transaction.highPrice,
+        minY: transaction.lowPrice,
       );
 
   LineTouchData get lineTouchData1 => LineTouchData(
@@ -257,7 +257,7 @@ class TransactionLineChart extends StatelessWidget {
         isStrokeCapRound: true,
         dotData: const FlDotData(show: false),
         belowBarData: BarAreaData(show: false),
-        spots: prices
+        spots: transaction.currentTradePrice
             .asMap()
             .map((index, data) =>
                 MapEntry(index, FlSpot(index.toDouble(), data.price)))

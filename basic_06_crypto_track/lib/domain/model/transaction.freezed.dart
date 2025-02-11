@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Transaction {
   String get market => throw _privateConstructorUsedError;
   bool get isPrimary => throw _privateConstructorUsedError;
+  double get highPrice => throw _privateConstructorUsedError;
+  double get lowPrice => throw _privateConstructorUsedError;
   List<TransactionPriceData> get currentTradePrice =>
       throw _privateConstructorUsedError;
   List<TransactionVolumnData> get currentTradeVolumn =>
@@ -39,6 +41,8 @@ abstract class $TransactionCopyWith<$Res> {
   $Res call(
       {String market,
       bool isPrimary,
+      double highPrice,
+      double lowPrice,
       List<TransactionPriceData> currentTradePrice,
       List<TransactionVolumnData> currentTradeVolumn});
 }
@@ -60,6 +64,8 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
   $Res call({
     Object? market = null,
     Object? isPrimary = null,
+    Object? highPrice = null,
+    Object? lowPrice = null,
     Object? currentTradePrice = null,
     Object? currentTradeVolumn = null,
   }) {
@@ -72,6 +78,14 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
           ? _value.isPrimary
           : isPrimary // ignore: cast_nullable_to_non_nullable
               as bool,
+      highPrice: null == highPrice
+          ? _value.highPrice
+          : highPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      lowPrice: null == lowPrice
+          ? _value.lowPrice
+          : lowPrice // ignore: cast_nullable_to_non_nullable
+              as double,
       currentTradePrice: null == currentTradePrice
           ? _value.currentTradePrice
           : currentTradePrice // ignore: cast_nullable_to_non_nullable
@@ -95,6 +109,8 @@ abstract class _$$TransactionImplCopyWith<$Res>
   $Res call(
       {String market,
       bool isPrimary,
+      double highPrice,
+      double lowPrice,
       List<TransactionPriceData> currentTradePrice,
       List<TransactionVolumnData> currentTradeVolumn});
 }
@@ -114,6 +130,8 @@ class __$$TransactionImplCopyWithImpl<$Res>
   $Res call({
     Object? market = null,
     Object? isPrimary = null,
+    Object? highPrice = null,
+    Object? lowPrice = null,
     Object? currentTradePrice = null,
     Object? currentTradeVolumn = null,
   }) {
@@ -126,6 +144,14 @@ class __$$TransactionImplCopyWithImpl<$Res>
           ? _value.isPrimary
           : isPrimary // ignore: cast_nullable_to_non_nullable
               as bool,
+      highPrice: null == highPrice
+          ? _value.highPrice
+          : highPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      lowPrice: null == lowPrice
+          ? _value.lowPrice
+          : lowPrice // ignore: cast_nullable_to_non_nullable
+              as double,
       currentTradePrice: null == currentTradePrice
           ? _value._currentTradePrice
           : currentTradePrice // ignore: cast_nullable_to_non_nullable
@@ -144,6 +170,8 @@ class _$TransactionImpl implements _Transaction {
   _$TransactionImpl(
       {required this.market,
       required this.isPrimary,
+      required this.highPrice,
+      required this.lowPrice,
       final List<TransactionPriceData> currentTradePrice = const [],
       final List<TransactionVolumnData> currentTradeVolumn = const []})
       : _currentTradePrice = currentTradePrice,
@@ -153,6 +181,10 @@ class _$TransactionImpl implements _Transaction {
   final String market;
   @override
   final bool isPrimary;
+  @override
+  final double highPrice;
+  @override
+  final double lowPrice;
   final List<TransactionPriceData> _currentTradePrice;
   @override
   @JsonKey()
@@ -175,7 +207,7 @@ class _$TransactionImpl implements _Transaction {
 
   @override
   String toString() {
-    return 'Transaction(market: $market, isPrimary: $isPrimary, currentTradePrice: $currentTradePrice, currentTradeVolumn: $currentTradeVolumn)';
+    return 'Transaction(market: $market, isPrimary: $isPrimary, highPrice: $highPrice, lowPrice: $lowPrice, currentTradePrice: $currentTradePrice, currentTradeVolumn: $currentTradeVolumn)';
   }
 
   @override
@@ -186,6 +218,10 @@ class _$TransactionImpl implements _Transaction {
             (identical(other.market, market) || other.market == market) &&
             (identical(other.isPrimary, isPrimary) ||
                 other.isPrimary == isPrimary) &&
+            (identical(other.highPrice, highPrice) ||
+                other.highPrice == highPrice) &&
+            (identical(other.lowPrice, lowPrice) ||
+                other.lowPrice == lowPrice) &&
             const DeepCollectionEquality()
                 .equals(other._currentTradePrice, _currentTradePrice) &&
             const DeepCollectionEquality()
@@ -197,6 +233,8 @@ class _$TransactionImpl implements _Transaction {
       runtimeType,
       market,
       isPrimary,
+      highPrice,
+      lowPrice,
       const DeepCollectionEquality().hash(_currentTradePrice),
       const DeepCollectionEquality().hash(_currentTradeVolumn));
 
@@ -213,6 +251,8 @@ abstract class _Transaction implements Transaction {
   factory _Transaction(
           {required final String market,
           required final bool isPrimary,
+          required final double highPrice,
+          required final double lowPrice,
           final List<TransactionPriceData> currentTradePrice,
           final List<TransactionVolumnData> currentTradeVolumn}) =
       _$TransactionImpl;
@@ -221,6 +261,10 @@ abstract class _Transaction implements Transaction {
   String get market;
   @override
   bool get isPrimary;
+  @override
+  double get highPrice;
+  @override
+  double get lowPrice;
   @override
   List<TransactionPriceData> get currentTradePrice;
   @override
