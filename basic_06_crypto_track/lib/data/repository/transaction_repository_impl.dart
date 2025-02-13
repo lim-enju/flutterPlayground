@@ -12,7 +12,14 @@ class TransactionRepositoryImpl implements TransactionRepository {
   @override
   Stream<List<Transaction>> getIntervalTransactions() async* {
     while (true) {
-      var markets = ['KRW-BTC', 'KRW-BTC', 'KRW-BTC'];
+      var markets = [
+        'KRW-BTC',
+        'KRW-ETH',
+        'BTC-ETH',
+        'BTC-DOGE',
+        'BTC-ETC',
+        'USDT-BTC'
+      ];
       List<Transaction> result = [];
 
       for (var element in markets) {
@@ -34,6 +41,8 @@ class TransactionRepositoryImpl implements TransactionRepository {
             isPrimary: false,
             highPrice: priceInfo.high_price,
             lowPrice: priceInfo.low_price,
+            signedChangePrice: priceInfo.signed_change_price,
+            change: priceInfo.change,
             currentTradePrice: [
               TransactionPriceData(price: priceInfo.trade_price),
             ],

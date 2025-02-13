@@ -11,6 +11,8 @@ class Transaction with _$Transaction {
     required bool isPrimary,
     required double highPrice,
     required double lowPrice,
+    required double signedChangePrice,
+    required String change,
     @Default([]) List<TransactionPriceData> currentTradePrice,
     @Default([]) List<TransactionVolumnData> currentTradeVolumn,
   }) = _Transaction;

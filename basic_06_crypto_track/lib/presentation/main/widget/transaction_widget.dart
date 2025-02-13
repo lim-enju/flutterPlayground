@@ -150,7 +150,7 @@ class TransactionBarChart extends StatelessWidget {
               bottomTitles:
                   AxisTitles(sideTitles: SideTitles(showTitles: false)),
             ),
-            maxY: 0.1,
+            maxY: 1,
             minY: 0,
           ),
         );
@@ -261,19 +261,18 @@ class TransactionLineChart extends StatelessWidget {
       );
 
   LineChartBarData get lineChartBarData1_1 => LineChartBarData(
-        isCurved: true,
-        color: Colors.white,
-        barWidth: 1,
-        isStrokeCapRound: true,
-        dotData: const FlDotData(show: false),
-        belowBarData: BarAreaData(show: false),
-        spots: transaction.currentTradePrice
-            .asMap()
-            .map((index, data) => MapEntry(
-                index, FlSpot(index.toDouble(), data.price / 1000000000)))
-            .values
-            .toList(),
-      );
+      isCurved: true,
+      color: Colors.white,
+      barWidth: 1,
+      isStrokeCapRound: true,
+      dotData: const FlDotData(show: false),
+      belowBarData: BarAreaData(show: false),
+      spots: transaction.currentTradePrice
+          .asMap()
+          .map((index, data) => MapEntry(
+              index, FlSpot(index.toDouble(), data.price / 1000000000)))
+          .values
+          .toList());
 }
 
 class TransactionBottomWidget extends StatelessWidget {
@@ -294,11 +293,17 @@ class TransactionBottomWidget extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         Text(
-          '+0.002345',
-          style: Theme.of(context).textTheme.bodyLarge,
+          transaction.signedChangePrice.toString(),
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: transaction.change == "EVEN"
+                    ? Colors.white // 상승 시 초록색
+                    : transaction.change == "RISE"
+                        ? Colors.red // 하락 시 빨간색
+                        : Colors.lightBlue, // 변화 없음 시 회색
+              ),
         ),
         Text(
-          'pending',
+          'open',
           style: Theme.of(context).textTheme.bodySmall,
         ),
       ],
