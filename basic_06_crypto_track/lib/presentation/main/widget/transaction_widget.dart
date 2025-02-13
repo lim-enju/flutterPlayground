@@ -24,7 +24,9 @@ class TransactionWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TransactionHeaderWidget(),
+              TransactionHeaderWidget(
+                transaction: transactionData,
+              ),
               SizedBox(
                 height: 10,
               ),
@@ -37,7 +39,9 @@ class TransactionWidget extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              TransactionBottomWidget(),
+              TransactionBottomWidget(
+                transaction: transactionData,
+              ),
             ],
           ),
         ),
@@ -47,7 +51,12 @@ class TransactionWidget extends StatelessWidget {
 }
 
 class TransactionHeaderWidget extends StatelessWidget {
-  const TransactionHeaderWidget({super.key});
+  final Transaction transaction;
+
+  const TransactionHeaderWidget({
+    super.key,
+    required this.transaction,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +150,7 @@ class TransactionBarChart extends StatelessWidget {
               bottomTitles:
                   AxisTitles(sideTitles: SideTitles(showTitles: false)),
             ),
-            maxY: 1,
+            maxY: 0.1,
             minY: 0,
           ),
         );
@@ -216,8 +225,8 @@ class TransactionLineChart extends StatelessWidget {
         lineBarsData: lineBarsData1,
         minX: 0,
         maxX: 10,
-        maxY: transaction.highPrice,
-        minY: transaction.lowPrice,
+        maxY: transaction.highPrice / 1000000000,
+        minY: transaction.lowPrice / 1000000000,
       );
 
   LineTouchData get lineTouchData1 => LineTouchData(
@@ -260,15 +269,20 @@ class TransactionLineChart extends StatelessWidget {
         belowBarData: BarAreaData(show: false),
         spots: transaction.currentTradePrice
             .asMap()
-            .map((index, data) =>
-                MapEntry(index, FlSpot(index.toDouble(), data.price)))
+            .map((index, data) => MapEntry(
+                index, FlSpot(index.toDouble(), data.price / 1000000000)))
             .values
             .toList(),
       );
 }
 
 class TransactionBottomWidget extends StatelessWidget {
-  const TransactionBottomWidget({super.key});
+  final Transaction transaction;
+
+  const TransactionBottomWidget({
+    super.key,
+    required this.transaction,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -276,7 +290,7 @@ class TransactionBottomWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'BTC',
+          transaction.market,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         Text(
