@@ -14,8 +14,10 @@ final router = GoRouter(
       builder: (context, state) => const MainScreen(),
     ),
     GoRoute(
-      path: '/detail',
-      builder: (context, state) => const DetailScreen(),
+      path: '/detail/:market',
+      builder: (context, state) => DetailScreen(
+        market: state.pathParameters['market'],
+      ),
     ),
   ],
 );

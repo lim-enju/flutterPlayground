@@ -13,6 +13,8 @@ import 'package:basic_06_crypto_track/data/repository/transaction_repository_imp
     as _i820;
 import 'package:basic_06_crypto_track/domain/repository/transaction_repository.dart'
     as _i547;
+import 'package:basic_06_crypto_track/presentation/detail/detail_viewmodel.dart'
+    as _i533;
 import 'package:basic_06_crypto_track/presentation/main/main_viewmodel.dart'
     as _i218;
 import 'package:get_it/get_it.dart' as _i174;
@@ -33,6 +35,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i820.TransactionRepositoryImpl());
     gh.factory<_i218.MainViewmodel>(
         () => _i218.MainViewmodel(gh<_i547.TransactionRepository>()));
+    gh.factory<_i533.DetailViewmodel>(
+        () => _i533.DetailViewmodel(gh<_i547.TransactionRepository>()));
     return this;
   }
 }

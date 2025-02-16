@@ -14,12 +14,10 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<MainViewmodel>();
-
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          Appbar(),
+          CustomAppBar(),
           MainScreenContent(),
         ],
       ),
@@ -43,7 +41,7 @@ class MainScreenContent extends StatelessWidget {
         crossAxisSpacing: 8,
         itemBuilder: (context, index) => InkWell(
           onTap: () {
-            context.go("/detail");
+            context.go("/detail/${state.transactions[index].market}");
           },
           child: TransactionWidget(
             transactionData: state.transactions[index],
