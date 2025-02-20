@@ -1,3 +1,4 @@
+import 'package:basic_06_crypto_track/domain/model/transaction.dart';
 import 'package:basic_06_crypto_track/presentation/detail/detail_viewmodel.dart';
 import 'package:basic_06_crypto_track/presentation/main/widget/transaction_widget.dart';
 import 'package:basic_06_crypto_track/presentation/widget/AppBar.dart';
@@ -29,30 +30,39 @@ class DetailScreen extends StatelessWidget {
   }
 }
 
-class DetailScreenContent extends StatelessWidget {
+class DetailScreenContent extends StatefulWidget {
   const DetailScreenContent({super.key, required this.market});
 
   final String? market;
 
   @override
-  Widget build(BuildContext context) {
-    Future.microtask(() {
-      print('Future.microtask');
-      context.read<DetailViewmodel>().getTransactionInfo(market!);
-    });
+  State<DetailScreenContent> createState() => _DetailScreenContentState();
+}
 
+class _DetailScreenContentState extends State<DetailScreenContent> {
+  @override
+  void initState() {
+    super.initState();
+    var viewModel = context.read<DetailViewmodel>();
+    viewModel.getTransactionInfo(widget.market!);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     var viewModel = context.watch<DetailViewmodel>();
-    var transaction = viewModel.state.transaction;
-    context.read<DetailViewmodel>().getTransactionInfo(market!);
+    var state = viewModel.state;
+
+    print(state.transaction);
+
     return SliverPadding(
       padding: EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 10),
       sliver: SliverToBoxAdapter(
         child: Column(
           children: [
-            if (transaction == null)
-              Text('')
+            if (state.transaction == null)
+              Text("데이터를 불러오는 중...")
             else
-              TransactionChart(transactionData: transaction),
+              TransactionChart(transactionData: state.transaction!),
           ],
         ),
       ),

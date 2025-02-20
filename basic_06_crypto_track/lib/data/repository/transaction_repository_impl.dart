@@ -33,15 +33,13 @@ class TransactionRepositoryImpl implements TransactionRepository {
 
   @override
   Stream<Transaction> getIntervalTransaction(String market) async* {
-    print('await1 featchTransactionInfo(market)');
     while (true) {
-      print('await2 featchTransactionInfo(market)');
       var transaction = await featchTransactionInfo(market);
-      print('await4 featchTransactionInfo(market)');
-      if (transaction != null) yield transaction;
-
+      print('transaction $transaction');
+      if (transaction != null) {
+        yield transaction;
+      }
       await Future.delayed(Duration(seconds: 1));
-      print('await3 featchTransactionInfo(market)');
     }
   }
 
@@ -51,16 +49,12 @@ class TransactionRepositoryImpl implements TransactionRepository {
     List<TransactionPriceDto> transactionPriceDto =
         await TransactionApi().getCurrentTransactionPrice(market);
     TransactionPriceDto? priceInfo = transactionPriceDto.firstOrNull;
-    print('featchTransactionInfo 1');
     if (priceInfo == null) return null;
-    print('featchTransactionInfo 2');
     // 실시간 볼륨 조회
     List<TransactionVolumeDto> transactionVolumneDto =
         await TransactionApi().getCurrentTransactionVolume(market);
     TransactionVolumeDto? volumnInfo = transactionVolumneDto.firstOrNull;
-    print('featchTransactionInfo 3');
     if (volumnInfo == null) return null;
-    print('featchTransactionInfo 4');
     return Transaction(
       market: priceInfo.market,
       isPrimary: false,

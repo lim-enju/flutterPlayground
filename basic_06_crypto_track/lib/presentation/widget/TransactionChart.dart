@@ -9,6 +9,8 @@ class TransactionChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Text("데이터 ${transactionData.market}");
+
     return Stack(
       children: [
         Positioned(

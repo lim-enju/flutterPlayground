@@ -13,11 +13,12 @@ class DetailViewmodel with ChangeNotifier {
 
   DetailViewmodel(this._transactionRepository);
 
-  Future<void> getTransactionInfo(String market) async {
-    _transactionRepository.getIntervalTransaction(market).listen((transaction) {
-      print(transaction);
-      _detailState = _detailState.copyWith(transaction: transaction);
-      notifyListeners();
-    });
+  void getTransactionInfo(String market) {
+    _transactionRepository.getIntervalTransaction(market).listen(
+      (transaction) {
+        _detailState = _detailState.copyWith(transaction: transaction);
+        notifyListeners();
+      },
+    );
   }
 }
