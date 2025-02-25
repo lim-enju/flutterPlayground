@@ -2,7 +2,6 @@ import 'package:basic_06_crypto_track/domain/model/transaction.dart';
 import 'package:basic_06_crypto_track/presentation/detail/detail_viewmodel.dart';
 import 'package:basic_06_crypto_track/presentation/main/widget/transaction_widget.dart';
 import 'package:basic_06_crypto_track/presentation/widget/AppBar.dart';
-import 'package:basic_06_crypto_track/presentation/widget/TransactionChart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -62,9 +61,92 @@ class _DetailScreenContentState extends State<DetailScreenContent> {
             if (state.transaction == null)
               Text("데이터를 불러오는 중...")
             else
-              TransactionChart(transactionData: state.transaction!),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Wallet Value',
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
+                  Text(
+                    'W${state.transaction?.currentTradePrice.last.price}',
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  SizedBox(
+                    height: 200,
+                    child: TransactionChart(
+                      transactionData: state.transaction!,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      TransactionSmallWidget(
+                        title: 'sdf',
+                        price: 'sdf',
+                        discription: 'sdfs',
+                      ),
+                      TransactionSmallWidget(
+                        title: 'sdf',
+                        price: 'sdf',
+                        discription: 'sdfs',
+                      )
+                    ],
+                  )
+                ],
+              )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class TransactionSmallWidget extends StatelessWidget {
+  const TransactionSmallWidget({
+    super.key,
+    required this.title,
+    required this.price,
+    required this.discription,
+  });
+
+  final String title;
+  final String price;
+  final String discription;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      // width: double.infinity,
+      padding: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.deepOrangeAccent,
+        borderRadius: BorderRadius.all(
+          Radius.circular(10),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+          SizedBox(
+            height: 3,
+          ),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+          SizedBox(
+            height: 3,
+          ),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+        ],
       ),
     );
   }

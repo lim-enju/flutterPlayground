@@ -9,21 +9,23 @@ class TransactionChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("데이터 ${transactionData.market}");
-
-    return Stack(
-      children: [
-        Positioned(
-          child: TransactionBarChart(
-            transaction: transactionData,
+    return SizedBox(
+      width: 1000,
+      height: 1000,
+      child: Stack(
+        children: [
+          Positioned(
+            child: TransactionBarChart(
+              transaction: transactionData,
+            ),
           ),
-        ),
-        Positioned(
-          child: TransactionLineChart(
-            transaction: transactionData,
+          Positioned(
+            child: TransactionLineChart(
+              transaction: transactionData,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
